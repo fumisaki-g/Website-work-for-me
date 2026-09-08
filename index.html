@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b52">
+  <title>Study Desk | Personal Information Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-card">
+      <div class="brand auth-brand"><span class="brand-mark">SD</span><div><strong>Study Desk</strong><small>Personal information hub</small></div></div>
+      <p class="eyebrow" id="authEyebrow">PRIVATE WORKSPACE</p>
+      <h1 id="authTitle">เข้าสู่ระบบ</h1>
+      <p class="muted" id="authDescription">เข้าสู่ระบบเพื่อดูข้อมูลส่วนตัวของคุณ</p>
+      <form id="authForm" class="auth-form">
+        <label>อีเมล<input type="email" id="authEmail" required autocomplete="email" placeholder="you@example.com"></label>
+        <label>รหัสผ่าน<input type="password" id="authPassword" required minlength="6" autocomplete="current-password" placeholder="อย่างน้อย 6 ตัวอักษร"></label>
+        <button class="primary-button full-width" type="submit" id="authSubmit">เข้าสู่ระบบ</button>
+      </form>
+      <p class="auth-status" id="authStatus" role="status"></p>
+      <button class="auth-switch" id="authSwitch" type="button">ยังไม่มีบัญชี? สมัครใช้งาน</button>
+    </div>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">SD</span><div><strong>Study Desk</strong><small>Personal information hub</small></div></div>
+      <div class="profile"><div class="avatar">W</div><div><strong id="profileName">Workspace</strong><span id="profileEmail">Academic year 2026</span></div><button class="icon-button" id="closeSidebar" aria-label="ปิดเมนู">×</button></div>
+      <nav class="nav-list" aria-label="เมนูหลัก">
+        <p class="nav-label">OVERVIEW</p>
+        <button class="nav-item active" data-section="overview"><span>⌂</span>ภาพรวม</button>
+        <button class="nav-item" data-section="calendar"><span>▦</span>ปฏิทิน</button>
+        <button class="nav-item" data-section="tasks"><span>✓</span>บันทึกงาน</button>
+        <button class="nav-item" data-section="free-time"><span>◷</span>เวลาว่าง</button>
+        <p class="nav-label">RESOURCES</p>
+        <button class="nav-item" data-section="timetable"><span>▤</span>ตารางเรียน</button>
+        <button class="nav-item" data-section="files"><span>↗</span>สื่อการเรียน</button>
+        <button class="nav-item" data-section="finance"><span>฿</span>รายรับรายจ่าย</button>
+      </nav>
+      <div class="sidebar-bottom"><button class="nav-item" data-section="settings"><span>⚙</span>การตั้งค่า</button><div class="sync-status"><i></i><span id="syncLabel">Supabase workspace</span><button class="logout-button" id="logoutButton" type="button">ออกจากระบบ</button></div></div>
+    </aside>
+    <div class="backdrop" id="backdrop"></div>
+    <main class="main-content">
+      <header class="topbar"><button class="menu-button" id="openSidebar" aria-label="เปิดเมนู">☰</button><div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="pageTitle">ภาพรวม</strong></div><div class="top-actions"><span class="today-label" id="todayLabel"></span><button class="outline-button" id="quickAdd">＋ เพิ่มงาน</button><div class="mini-avatar">W</div></div></header>
+
+      <section class="page-section active" id="overview">
+        <div class="welcome-row"><div><p class="eyebrow">TUESDAY, 08 SEPTEMBER 2026</p><h1>สวัสดี, ยินดีต้อนรับกลับมา</h1><p class="muted">ศูนย์รวมข้อมูลส่วนตัวสำหรับการเรียนและชีวิตประจำวันของคุณ</p></div><div class="date-card"><span>วันนี้</span><strong id="heroDate">08</strong><small>ก.ย. 2026</small></div></div>
+        <div class="stats-grid"><article class="stat-card navy"><div class="stat-icon">✓</div><div><span>งานที่ต้องจัดการ</span><strong id="statTasks">0</strong><small>รายการที่ยังไม่เสร็จ</small></div></article><article class="stat-card gold"><div class="stat-icon">◷</div><div><span>เวลาว่างวันนี้</span><strong id="statFree">10 ชม.</strong><small id="statFreeDetail">พร้อมวางแผน</small></div></article><article class="stat-card mint"><div class="stat-icon">฿</div><div><span>รายรับเดือนนี้</span><strong id="statIncome">฿0</strong><small id="statExpense">รายจ่าย ฿0</small></div></article><article class="stat-card pale"><div class="stat-icon">▦</div><div><span>กิจกรรมเดือนนี้</span><strong id="statEvents">0</strong><small>จากปฏิทินของคุณ</small></div></article></div>
+        <div class="dashboard-grid"><article class="panel focus-panel"><div class="panel-heading"><div><p class="eyebrow">FOCUS LIST</p><h2>สิ่งที่ต้องทำ</h2></div><button class="text-button" data-jump="tasks">ดูทั้งหมด <span>→</span></button></div><div id="focusList" class="task-list empty-state"><div class="empty-icon">✓</div><strong>ยังไม่มีงานที่บันทึกไว้</strong><span>เพิ่มงานแรกของคุณเพื่อเริ่มวางแผน</span><button class="small-button" id="emptyAdd">เพิ่มงาน</button></div></article><article class="panel agenda-panel"><div class="panel-heading"><div><p class="eyebrow">UP NEXT</p><h2>กำหนดการถัดไป</h2></div><button class="text-button" data-jump="calendar">เปิดปฏิทิน <span>→</span></button></div><div id="upcomingList" class="agenda-list empty-state"><div class="empty-icon">▦</div><strong>ปฏิทินยังว่างอยู่</strong><span>งานที่มีวันกำหนดส่งจะแสดงตรงนี้</span></div></article></div>
+        <div class="quick-links"><div><p class="eyebrow">QUICK ACCESS</p><h2>แหล่งข้อมูลของคุณ</h2></div><div class="link-grid"><button class="resource-link" data-jump="timetable"><span class="resource-icon blue">▤</span><span><strong>ตารางเรียน</strong><small>ดูตารางประจำสัปดาห์</small></span><b>→</b></button><button class="resource-link" data-jump="files"><span class="resource-icon orange">↗</span><span><strong>Google Drive</strong><small>สื่อการเรียนทั้งหมด</small></span><b>→</b></button><button class="resource-link" data-jump="finance"><span class="resource-icon green">฿</span><span><strong>การเงิน</strong><small>สรุปการเงินของคุณ</small></span><b>→</b></button></div></div>
+      </section>
+
+      <section class="page-section" id="calendar"><div class="section-header"><div><p class="eyebrow">PLANNING CENTER</p><h1>ปฏิทิน</h1><p class="muted">ดูภาพรวมงาน กิจกรรม และวันสำคัญในที่เดียว</p></div><div class="section-actions"><button class="outline-button" id="googleCalendar">↗ Google Calendar</button><button class="primary-button" id="calendarAdd">＋ เพิ่มงาน</button></div></div><div class="calendar-layout"><article class="panel calendar-panel"><div class="calendar-toolbar"><button class="circle-button" id="prevMonth">‹</button><h2 id="monthTitle"></h2><button class="circle-button" id="nextMonth">›</button><button class="today-button" id="goToday">วันนี้</button></div><div class="calendar-weekdays"><span>อา</span><span>จ</span><span>อ</span><span>พ</span><span>พฤ</span><span>ศ</span><span>ส</span></div><div class="calendar-grid" id="calendarGrid"></div></article><aside class="panel day-panel"><p class="eyebrow">SELECTED DAY</p><h2 id="selectedDateTitle">วันนี้</h2><div id="dayEvents" class="day-events"></div><button class="wide-button" id="dayAdd">＋ เพิ่มงานวันนี้</button></aside></div></section>
+
+      <section class="page-section" id="tasks"><div class="section-header"><div><p class="eyebrow">TASK MANAGEMENT</p><h1>บันทึกงาน</h1><p class="muted">จัดลำดับงานและติดตามสิ่งที่ต้องทำ</p></div><button class="primary-button" id="taskAdd">＋ บันทึกงานใหม่</button></div><div class="task-toolbar"><div class="filter-tabs"><button class="filter-tab active" data-filter="all">ทั้งหมด</button><button class="filter-tab" data-filter="pending">ยังไม่เสร็จ</button><button class="filter-tab" data-filter="done">เสร็จแล้ว</button></div><div class="search-box">⌕<input id="taskSearch" placeholder="ค้นหางาน..."></div></div><div class="panel full-panel"><div id="taskList" class="full-task-list"></div></div></section>
+
+      <section class="page-section" id="free-time"><div class="section-header"><div><p class="eyebrow">TIME OPTIMIZER</p><h1>เช็คเวลาว่าง</h1><p class="muted">ค้นหาช่องว่างจากกำหนดการของคุณ เพื่อใช้วางแผนได้แม่นยำขึ้น</p></div></div><div class="free-layout"><article class="panel free-panel"><div class="free-controls"><label>เลือกวันที่<input type="date" id="freeDate"></label><label>ช่วงเวลาที่ต้องการ<select id="freeRange"><option value="08-18">08:00 - 18:00</option><option value="06-22">06:00 - 22:00</option></select></label><button class="primary-button" id="calculateFree">คำนวณเวลาว่าง</button></div><div id="freeResult" class="free-result"></div></article><article class="panel info-panel"><div class="info-symbol">◷</div><h2>วางแผนเวลาอย่างมีสมาธิ</h2><p>ระบบจะนำงานที่มีเวลาเริ่มต้นและเวลาสิ้นสุดมาหักออกจากช่วงเวลาที่เลือก และแสดงช่วงเวลาที่เหลือให้คุณ</p><div class="legend"><span><i class="free-dot"></i>เวลาว่าง</span><span><i class="busy-dot"></i>มีงาน</span></div></article></div></section>
+
+      <section class="page-section" id="timetable"><div class="section-header"><div><p class="eyebrow">WEEKLY SCHEDULE</p><h1>ตารางเรียน</h1><p class="muted">อัปโหลดรูปภาพตารางเรียนของคุณเพื่อดูได้จากทุกอุปกรณ์</p></div></div><article class="panel timetable-panel"><div class="upload-zone" id="uploadZone"><input type="file" id="timetableInput" accept="image/png,image/jpeg"><div class="upload-icon">↑</div><h2>วางรูปตารางเรียนไว้ที่นี่</h2><p>รองรับไฟล์ PNG หรือ JPG</p><button class="outline-button">เลือกไฟล์จากเครื่อง</button></div><div class="timetable-preview hidden" id="timetablePreview"><div class="preview-heading"><div><p class="eyebrow">CURRENT IMAGE</p><h2>ตารางเรียนของฉัน</h2></div><button class="text-button danger" id="removeTimetable">ลบรูปภาพ</button></div><img id="timetableImage" alt="รูปตารางเรียน"></div></article></section>
+
+      <section class="page-section" id="files"><div class="section-header"><div><p class="eyebrow">RESOURCE LIBRARY</p><h1>สื่อการเรียน</h1><p class="muted">เข้าถึงเอกสารและสื่อทั้งหมดจาก Google Drive</p></div><button class="primary-button" id="driveButton">↗ เปิด Google Drive</button></div><article class="drive-card"><div class="drive-mark">▣</div><div><p class="eyebrow">EXTERNAL RESOURCE</p><h2>โฟลเดอร์สื่อการเรียนของฉัน</h2><p>รวมเอกสาร ชีทเรียน งานที่ส่ง และไฟล์สำคัญไว้ในที่เดียว</p><button class="white-button" id="driveCardButton">ไปยัง Google Drive <span>↗</span></button></div><div class="drive-illustration">↗</div></article><div class="note-panel"><span>ⓘ</span><p>คุณสามารถตั้งค่าลิงก์ Google Drive ของคุณได้ในหน้า <button class="inline-link" data-jump="settings">การตั้งค่า</button></p></div></section>
+
+      <section class="page-section" id="finance"><div class="section-header"><div><p class="eyebrow">PERSONAL FINANCE</p><h1>รายรับรายจ่าย</h1><p class="muted">ติดตามภาพรวมเงินของคุณด้วยข้อมูลที่อ่านง่าย</p></div><button class="primary-button" id="financeAdd">＋ เพิ่มรายการ</button></div><div class="finance-stats"><article class="panel finance-stat"><span>รายรับทั้งหมด</span><strong class="income-text" id="incomeTotal">฿0</strong><small>จากรายการทั้งหมด</small></article><article class="panel finance-stat"><span>รายจ่ายทั้งหมด</span><strong class="expense-text" id="expenseTotal">฿0</strong><small>จากรายการทั้งหมด</small></article><article class="panel finance-stat"><span>คงเหลือสุทธิ</span><strong id="balanceTotal">฿0</strong><small>รายรับหักรายจ่าย</small></article></div><div class="finance-layout"><article class="panel chart-panel"><div class="panel-heading"><div><p class="eyebrow">CASHFLOW</p><h2>แนวโน้มการเงิน</h2></div><span class="chart-key"><i></i> ยอดคงเหลือ</span></div><div class="chart-wrap"><svg id="financeChart" viewBox="0 0 720 260" preserveAspectRatio="none" aria-label="กราฟรายรับรายจ่าย"></svg></div></article><article class="panel transactions-panel"><div class="panel-heading"><h2>รายการล่าสุด</h2><button class="text-button" id="transactionAdd">＋ เพิ่ม</button></div><div id="transactionList" class="transaction-list"></div></article></div></section>
+
+      <section class="page-section" id="settings"><div class="section-header"><div><p class="eyebrow">WORKSPACE SETTINGS</p><h1>การตั้งค่า</h1><p class="muted">เชื่อมต่อแหล่งข้อมูลภายนอกและปรับแต่งพื้นที่ทำงาน</p></div></div><div class="settings-grid"><article class="panel setting-card"><div class="setting-icon">▣</div><div><h2>Google Drive</h2><p>ลิงก์โฟลเดอร์สำหรับสื่อการเรียน</p><label class="setting-input"><span>URL โฟลเดอร์</span><input id="driveUrl" type="url" placeholder="https://drive.google.com/drive/folders/..."></label><button class="primary-button" id="saveDrive">บันทึกลิงก์</button></div></article><article class="panel setting-card"><div class="setting-icon">⌁</div><div><h2>Supabase</h2><p>ตั้งค่าไว้ในไฟล์โปรเจกต์แล้ว ไม่ต้องกรอกผ่านหน้าเว็บ</p><div class="configured-status"><span class="status-dot"></span><strong id="supabaseStatus">กำลังตรวจสอบการตั้งค่า...</strong></div><small class="setting-note">แก้ไขไฟล์ <b>supabase-config.js</b> ก่อนอัปโหลดขึ้น GitHub ใช้เฉพาะ anon public key เท่านั้น</small></div></article><article class="panel setting-card"><div class="setting-icon">◌</div><div><h2>Google Calendar</h2><p>ลิงก์ไปยังปฏิทินสากลจาก Google Calendar</p><label class="setting-input"><span>Calendar URL</span><input id="calendarUrl" type="url" placeholder="https://calendar.google.com/calendar/u/0/r"></label><button class="primary-button" id="saveCalendar">บันทึกลิงก์</button></div></article></div></section>
+    </main>
+  </div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose">×</button><p class="eyebrow" id="modalEyebrow">NEW ENTRY</p><h2 id="modalTitle">บันทึกงานใหม่</h2><form id="taskForm" class="modal-form"><label>ชื่องาน<input required id="taskTitle" placeholder="เช่น ส่งรายงานวิชาคณิตศาสตร์"></label><div class="form-row"><label>วันที่<input required type="date" id="taskDate"></label><label>ความสำคัญ<select id="taskPriority"><option value="high">สูง</option><option value="medium" selected>ปานกลาง</option><option value="low">ต่ำ</option></select></label></div><div class="form-row"><label>เวลาเริ่มต้น<input type="time" id="taskStart"></label><label>เวลาสิ้นสุด<input type="time" id="taskEnd"></label></div><label>รายละเอียด<textarea id="taskNote" rows="3" placeholder="บันทึกเพิ่มเติม (ไม่บังคับ)"></textarea></label><button class="primary-button full-width" type="submit">บันทึกงาน</button></form><form id="financeForm" class="modal-form hidden"><label>รายการ<input required id="financeTitle" placeholder="เช่น ค่าอาหารกลางวัน"></label><div class="form-row"><label>จำนวนเงิน (บาท)<input required type="number" min="0" step="0.01" id="financeAmount" placeholder="0.00"></label><label>ประเภท<select id="financeType"><option value="income">รายรับ</option><option value="expense">รายจ่าย</option></select></label></div><label>วันที่<input required type="date" id="financeDate"></label><button class="primary-button full-width" type="submit">บันทึกรายการ</button></form></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
